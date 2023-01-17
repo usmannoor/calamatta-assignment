@@ -1,0 +1,19 @@
+<div class="container mt-5">
+  <div class="card">
+
+    <app-header></app-header>
+
+    <div class="card-body">
+      <div class="row">
+        <div *ngFor="let stock of stocksList; trackBy:trackStock" class="col-lg-3">
+          <div class="mb-3">
+            <app-stock-card [stockDetail]="stock"></app-stock-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<app-loader *ngIf="isLoading">{{ isLoading }}</app-loader>

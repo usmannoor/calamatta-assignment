@@ -1,0 +1,23 @@
+@import '../../../assets/scss/helpers/variables';
+
+.card {
+  padding: 1.5em .5em .5em;
+  border-radius: 1em;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+h1, h3, h4, h5 {
+  color: $picked-bluewood-2;
+}
+
+#desktop-data {
+  display: none;
+}
+
+/* to target desktop */
+@media screen and (min-width: 720px) {
+  #desktop-data {
+    display: block;
+  }
+}

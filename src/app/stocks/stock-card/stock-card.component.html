@@ -1,0 +1,33 @@
+<div class="card mb-4 shadow-sm text-center"
+     [ngClass]="{
+    'stock-down': stockDetail?.regularMarketPrice < stockDetail?.regularMarketPreviousClose,
+    'stock-up': stockDetail?.regularMarketPrice > stockDetail?.regularMarketPreviousClose,
+    'stock-disabled': !stockDetail?.isActive
+  }">
+
+  <div class="card-header border-0 bg-transparent">
+    <h1 class="my-0 font-weight-normal">{{ stockDetail?.symbol }}</h1>
+  </div>
+
+  <div class="card-body">
+    <div class="text-center">
+      <h3>{{ stockDetail?.regularMarketPrice | currency: 'USD':'symbol' }}</h3>
+      <h4 class="mt-4">
+        {{ stockDetail?.regularMarketChange < 0 ? '' : '+' }}{{ stockDetail?.regularMarketChange | number : '1.2-2' }}
+      </h4>
+      <h4>
+        ({{ stockDetail?.regularMarketChangePercent | number : '1.2-2' }}%)
+      </h4>
+      <div id="desktop-data">
+        <h4 class="mt-4"><b>Last Trade</b><br></h4>
+        <h5>{{ stockDetail?.regularMarketTime * 1000 | date : 'mediumDate' }}</h5>
+        <h4 class="mt-4">VOL: {{ stockDetail?.regularMarketVolume }}</h4>
+        <h4 class="mt-4"><b>52 Weeks</b><br></h4>
+        <h5>{{ stockDetail?.fiftyTwoWeekRange }}</h5>
+      </div>
+
+      <app-stock-card-toggle [switchValue]="stockDetail?.isActive" (toggleChange)="onToggleValueChanged($event)"></app-stock-card-toggle>
+    </div>
+  </div>
+
+</div>
